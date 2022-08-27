@@ -1,10 +1,17 @@
 import Text from "@components/Text";
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_700Bold,
+  useFonts,
+} from "@expo-google-fonts/inter";
+import { theme, ThemeProps } from "@lib/theme";
 import { ImageBackground, StatusBar } from "react-native";
 import {
   getBottomSpace,
   getStatusBarHeight,
 } from "react-native-iphone-x-helper";
-import styled from "styled-components/native";
+import styled, { ThemeProvider } from "styled-components/native";
 
 const Container = styled.View`
   flex: 1;
@@ -19,15 +26,31 @@ const Background = styled(ImageBackground)`
 `;
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <></>;
+  }
+
   return (
-    <Background
-      source={require("@assets/images/background.png")}
-      resizeMode="cover"
-    >
-      <StatusBar barStyle="default" backgroundColor="transparent" translucent />
-      <Container>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </Container>
-    </Background>
+    <ThemeProvider theme={theme as ThemeProps}>
+      <Background
+        source={require("@assets/images/background.png")}
+        resizeMode="cover"
+      >
+        <StatusBar
+          barStyle="default"
+          backgroundColor="transparent"
+          translucent
+        />
+        <Container>
+          <Text>Open up App.tsx to start working on your app!</Text>
+        </Container>
+      </Background>
+    </ThemeProvider>
   );
 }
