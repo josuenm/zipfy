@@ -2,6 +2,15 @@ import styled from "styled-components/native";
 
 export const Container = styled.View<{ width: string }>`
   width: ${({ width }) => width + "px" || "100%"};
+`;
+
+export const Gif = styled.Image`
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+`;
+
+export const Info = styled.View`
   padding: 0 15px;
 `;
 
