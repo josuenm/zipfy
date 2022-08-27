@@ -1,5 +1,6 @@
 export interface TextStyles {
-  fontSize?: string;
+  fontWeight?: string | number;
+  fontSize?: string | number;
   color?: string;
 }
 
