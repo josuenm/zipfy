@@ -1,4 +1,4 @@
-package com.anyfy.cepfy.newarchitecture.components;
+package com.anyfy.zipfy.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

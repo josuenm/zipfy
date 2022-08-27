@@ -1,16 +1,12 @@
 {
   "expo": {
-    "name": "cepfy",
-    "slug": "cepfy",
+    "name": "zipfy",
+    "slug": "zipfy",
     "version": "1.0.0",
     "sdkVersion": "46.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "android": {
-      "package": "com.anyfy.cepfy"
+      "package": "com.anyfy.zipfy"
     }
   }
 }

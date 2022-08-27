@@ -1,4 +1,4 @@
-package com.anyfy.cepfy.newarchitecture;
+package com.anyfy.zipfy.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.anyfy.cepfy.BuildConfig;
-import com.anyfy.cepfy.newarchitecture.components.MainComponentsRegistry;
-import com.anyfy.cepfy.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.anyfy.zipfy.BuildConfig;
+import com.anyfy.zipfy.newarchitecture.components.MainComponentsRegistry;
+import com.anyfy.zipfy.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

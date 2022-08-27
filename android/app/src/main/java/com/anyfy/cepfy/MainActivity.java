@@ -1,4 +1,4 @@
-package com.anyfy.cepfy;
+package com.anyfy.zipfy;
 
 import android.os.Build;
 import android.os.Bundle;
