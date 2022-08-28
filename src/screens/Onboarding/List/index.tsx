@@ -1,7 +1,15 @@
-import { useRef, useState } from "react";
+import { AntDesign } from "@expo/vector-icons";
+import { theme } from "@lib/theme";
+import { useEffect, useRef, useState } from "react";
 import { Animated } from "react-native";
+import Svg, { Circle, G as GElement } from "react-native-svg";
 import OnboardingItem from "../Item";
-import { Container, List } from "./styles";
+import { ButtonWithIcon, Container, List, NextButtonContainer } from "./styles";
+
+interface NextButtonProps {
+  percentage: number;
+  scrollTo: (direction: string) => void;
+}
 
 const slides = [
   {
@@ -25,6 +33,77 @@ const slides = [
   },
 ];
 
+const G = GElement as any;
+
+const NextButton = ({ percentage, scrollTo }: NextButtonProps) => {
+  const size = 128;
+  const strokeWidth = 2;
+  const center = size / 2;
+  const radius = size / 2 - strokeWidth / 2;
+  const circumference = 2 * Math.PI * radius;
+
+  const progressAnimation = useRef(new Animated.Value(0)).current;
+  const progressRef = useRef(null);
+
+  const animation = (toValue: number) => {
+    return Animated.timing(progressAnimation, {
+      toValue,
+      duration: 250,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  useEffect(() => {
+    animation(percentage);
+  }, [percentage]);
+
+  useEffect(() => {
+    progressAnimation.addListener((value) => {
+      const strokeDashoffset =
+        circumference - (circumference * value.value) / 100;
+
+      if (progressRef?.current) {
+        progressRef.current.setNativeProps({
+          strokeDashoffset,
+        });
+      }
+    });
+
+    return () => {
+      progressAnimation.removeAllListeners();
+    };
+  }, [percentage]);
+
+  return (
+    <NextButtonContainer>
+      <Svg width={size} height={size}>
+        <G rotation={-90} origin={center}>
+          <Circle
+            stroke="#aaa"
+            cx={center}
+            cy={center}
+            r={radius}
+            strokeWidth={strokeWidth}
+          />
+          <Circle
+            ref={progressRef}
+            stroke={theme.colors.primary}
+            cx={center}
+            cy={center}
+            r={radius}
+            strokeWidth={strokeWidth}
+            strokeDasharray={circumference}
+            strokeDashoffset={circumference - (circumference * 30) / 100}
+          />
+        </G>
+      </Svg>
+      <ButtonWithIcon onPress={() => scrollTo("next")}>
+        <AntDesign name="arrowright" size={24} color="white" />
+      </ButtonWithIcon>
+    </NextButtonContainer>
+  );
+};
+
 const OnboardingList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -37,13 +116,21 @@ const OnboardingList = () => {
 
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
+  const scrollTo = (direction: string) => {
+    if (direction === "next") {
+      if (currentIndex < slides.length - 1) {
+        slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
+      }
+    } else {
+      slidesRef.current.scrollToIndex({ index: currentIndex - 1 });
+    }
+  };
+
   return (
     <Container>
       <List
         data={slides}
-        renderItem={({ item }) => (
-          <OnboardingItem data={item} paginator={currentIndex} />
-        )}
+        renderItem={({ item }) => <OnboardingItem data={item} />}
         keyExtractor={(item: { id: string }) => item.id}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
@@ -55,6 +142,11 @@ const OnboardingList = () => {
         scrollEventThrottle={32}
         viewabilityConfig={viewConfig}
         ref={slidesRef}
+      />
+
+      <NextButton
+        scrollTo={scrollTo}
+        percentage={(currentIndex + 1) * (100 / slides.length)}
       />
     </Container>
   );
