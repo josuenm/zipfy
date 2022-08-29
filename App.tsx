@@ -5,7 +5,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { theme, ThemeProps } from "@lib/theme";
-import Onboarding from "@screens/Onboarding/List";
+import { Dashboard } from "@screens/Dashboard";
 import { ImageBackground, StatusBar } from "react-native";
 import {
   getBottomSpace,
@@ -48,7 +48,7 @@ export default function App() {
           translucent
         />
         <Container>
-          <Onboarding />
+          <Dashboard />
         </Container>
       </Background>
     </ThemeProvider>
