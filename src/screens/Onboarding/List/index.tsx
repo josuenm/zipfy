@@ -4,7 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import { Animated } from "react-native";
 import Svg, { Circle, G as GElement } from "react-native-svg";
 import OnboardingItem from "../Item";
-import { ButtonWithIcon, Container, List, NextButtonContainer } from "./styles";
+import {
+  ButtonWithIcon,
+  Container,
+  InfoContainer,
+  List,
+  NextButtonContainer,
+  SkipButton,
+  SkipText,
+} from "./styles";
 
 interface NextButtonProps {
   percentage: number;
@@ -144,10 +152,15 @@ const OnboardingList = () => {
         ref={slidesRef}
       />
 
-      <NextButton
-        scrollTo={scrollTo}
-        percentage={(currentIndex + 1) * (100 / slides.length)}
-      />
+      <InfoContainer>
+        <NextButton
+          scrollTo={scrollTo}
+          percentage={(currentIndex + 1) * (100 / slides.length)}
+        />
+        <SkipButton>
+          <SkipText>Pular todas etapas</SkipText>
+        </SkipButton>
+      </InfoContainer>
     </Container>
   );
 };
