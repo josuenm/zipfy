@@ -9,7 +9,7 @@ export const Gif = styled.Image.attrs({
 })`
   width: 100%;
   max-height: 250px;
-  margin: 35px auto 15px;
+  margin: 35px auto 0;
 `;
 
 export const Info = styled.View`
