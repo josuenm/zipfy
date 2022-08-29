@@ -11,7 +11,7 @@
 
 - React Native 0.69.5
 - Expo 46
-- styld-components
+- styled-components
 - react-native-svg
 - commitizen
 
