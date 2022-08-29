@@ -37,5 +37,6 @@ export const SkipButton = styled.TouchableOpacity.attrs({
 `;
 
 export const SkipText = styled.Text`
+  font-family: ${({ theme }) => theme.fontWeight.regular};
   color: #aaa;
 `;
