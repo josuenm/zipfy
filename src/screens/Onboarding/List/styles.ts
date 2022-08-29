@@ -10,8 +10,11 @@ export const List = styled.FlatList.attrs({
   pagingEnabled: true,
 })``;
 
+export const InfoContainer = styled.View`
+  margin-bottom: 70px;
+`;
+
 export const NextButtonContainer = styled.View`
-  margin-bottom: 100px;
   align-items: center;
   justify-content: center;
 `;
@@ -25,4 +28,14 @@ export const ButtonWithIcon = styled.TouchableOpacity.attrs({
   align-items: center;
   border-radius: 100px;
   padding: 20px;
+`;
+
+export const SkipButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6,
+})`
+  margin: 25px auto 0;
+`;
+
+export const SkipText = styled.Text`
+  color: #aaa;
 `;
