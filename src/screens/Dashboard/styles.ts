@@ -1,13 +1,13 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  flex: 1;
-  justify-content: center;
+  margin-top: 50px;
 `;
 
 export const SearchContainer = styled.View`
   width: 100%;
   align-items: center;
+  align-self: center;
 `;
 
 export const Title = styled.Text`
@@ -33,5 +33,31 @@ export const Submit = styled.Button`
   font-family: ${({ theme }) => theme.fontWeight.bold};
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.primary};
+  color: #fff;
+`;
+
+export const AddressFoundContainer = styled.FlatList`
+  margin-top: 50px;
+  padding: 20px;
+  border: 1px solid #303030;
+  border-radius: 10px;
+`;
+
+export const InfoContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const InfoTitle = styled.Text`
+  text-transform: uppercase;
+  font-family: ${({ theme }) => theme.fontWeight.bold};
+  font-size: 16px;
+  color: #fff;
+  margin-right: 8px;
+`;
+
+export const InfoDescription = styled.Text`
+  font-family: ${({ theme }) => theme.fontWeight.regular};
+  font-size: 14px;
   color: #fff;
 `;
