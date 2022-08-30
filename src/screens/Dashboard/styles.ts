@@ -16,16 +16,21 @@ export const Title = styled.Text`
   color: #fff;
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled.TextInput<{ error: boolean }>`
   width: 200px;
   padding: 5px 10px;
-  margin: 25px 0;
+  margin-top: 25px;
   border-radius: 10px;
   background-color: #fff;
+  border: ${({ error }) => error && "2px solid #fc5d5d"};
+  margin-bottom: 15px;
 `;
 
-export const SubmitContainer = styled.View`
-  width: 100%;
+export const ErrorMessage = styled.Text`
+  color: #fc5d5d;
+  font-size: 14px;
+  font-family: ${({ theme }) => theme.fontWeight.regular};
+  margin-bottom: 25px;
 `;
 
 export const Submit = styled.Button`
