@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   margin-top: 50px;
 `;
 
@@ -36,28 +36,13 @@ export const Submit = styled.Button`
   color: #fff;
 `;
 
-export const AddressFoundContainer = styled.FlatList`
-  margin-top: 50px;
-  padding: 20px;
-  border: 1px solid #303030;
-  border-radius: 10px;
+export const AddressContainer = styled.View`
+  margin-top: 40px;
 `;
 
-export const InfoContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const InfoTitle = styled.Text`
-  text-transform: uppercase;
-  font-family: ${({ theme }) => theme.fontWeight.bold};
+export const AddressTitle = styled.Text`
   font-size: 16px;
   color: #fff;
-  margin-right: 8px;
-`;
-
-export const InfoDescription = styled.Text`
-  font-family: ${({ theme }) => theme.fontWeight.regular};
-  font-size: 14px;
-  color: #fff;
+  font-family: ${({ theme }) => theme.fontWeight.medium};
+  margin-bottom: 15px;
 `;
