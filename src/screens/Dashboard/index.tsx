@@ -1,11 +1,13 @@
 import { AddressCard } from "@components/AddressCard";
 import { useState } from "react";
+import { Keyboard } from "react-native";
 import { zipApi } from "src/services/zipApi";
 import { AddressProps } from "src/types/AddressProps";
 import {
   AddressContainer,
   AddressTitle,
   Container,
+  ErrorMessage,
   Input,
   SearchContainer,
   Submit,
@@ -15,11 +17,40 @@ import {
 export const Dashboard = () => {
   const [address, setAddress] = useState<AddressProps>(null);
   const [search, setSearch] = useState<string>("");
+  const [error, setError] = useState<string>(null);
+
+  function handleErrors() {
+    if (search.length < 1) {
+      return "Insira um CEP";
+    }
+
+    if (search.length < 5) {
+      return "Insira um CEP válido";
+    }
+
+    return false;
+  }
 
   async function SearchZipCode() {
-    const response = (await zipApi.findZip(search)) as AddressProps;
+    Keyboard.dismiss();
+
+    const isError = handleErrors();
+
+    if (!!isError) {
+      setError(isError);
+      return;
+    }
+
+    const response = (await zipApi.findZip(
+      search.replaceAll("-", "")
+    )) as AddressProps;
 
     !!response && setAddress(response);
+  }
+
+  function onChangeSearch(text: string) {
+    setSearch(text);
+    error && setError(null);
   }
 
   return (
@@ -29,8 +60,10 @@ export const Dashboard = () => {
         <Input
           placeholder="00000-000"
           value={search}
-          onChangeText={(text: string) => setSearch(text)}
+          onChangeText={onChangeSearch}
+          error={!!error}
         />
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <Submit
           title="Pesquisar"
           accessibilityLabel="Pesquise seu CEP"
