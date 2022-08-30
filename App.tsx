@@ -1,3 +1,4 @@
+import { BottomNavigation } from "@components/BottomNavigation";
 import {
   Inter_400Regular,
   Inter_500Medium,
@@ -5,7 +6,6 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { theme, ThemeProps } from "@lib/theme";
-import { Dashboard } from "@screens/Dashboard";
 import { ImageBackground, StatusBar } from "react-native";
 import {
   getBottomSpace,
@@ -48,7 +48,7 @@ export default function App() {
           translucent
         />
         <Container>
-          <Dashboard />
+          <BottomNavigation />
         </Container>
       </Background>
     </ThemeProvider>
