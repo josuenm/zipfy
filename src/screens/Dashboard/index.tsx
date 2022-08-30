@@ -1,12 +1,11 @@
+import { AddressCard } from "@components/AddressCard";
 import { useState } from "react";
 import { zipApi } from "src/services/zipApi";
-import { AddressProps, AddressResponseProps } from "src/types/AddressProps";
+import { AddressProps } from "src/types/AddressProps";
 import {
-  AddressFoundContainer,
+  AddressContainer,
+  AddressTitle,
   Container,
-  InfoContainer,
-  InfoDescription,
-  InfoTitle,
   Input,
   SearchContainer,
   Submit,
@@ -14,43 +13,13 @@ import {
 } from "./styles";
 
 export const Dashboard = () => {
-  const [address, setAddress] = useState<AddressProps[]>([]);
+  const [address, setAddress] = useState<AddressProps>(null);
   const [search, setSearch] = useState<string>("");
 
-  function convertResponse(data: { [key: string]: string }) {
-    const keys = Object.keys(data);
-    const values = Object.values(data);
-
-    const newObj = [];
-
-    for (let i = 0; i < keys.length; i++) {
-      newObj.push({ id: i, title: keys[i], description: values[i] });
-    }
-
-    return newObj;
-  }
-
   async function SearchZipCode() {
-    const response = (await zipApi.findZip(search)) as AddressResponseProps;
+    const response = (await zipApi.findZip(search)) as AddressProps;
 
-    if (!response) {
-      return;
-    }
-
-    const newObj = convertResponse({
-      bairro: response.bairro,
-      cep: response.cep,
-      complemento:
-        response.complemento.length > 0 ? response.complemento : "Nenhum",
-      ddd: response.ddd,
-      icms: response.gia,
-      população: response.ibge,
-      cidade: response.localidade,
-      rua: response.logradouro,
-      siafi: response.siafi,
-      estado: response.uf,
-    });
-    setAddress(newObj);
+    !!response && setAddress(response);
   }
 
   return (
@@ -69,17 +38,11 @@ export const Dashboard = () => {
         />
       </SearchContainer>
 
-      {address.length > 0 && (
-        <AddressFoundContainer
-          data={address}
-          renderItem={({ item }) => (
-            <InfoContainer>
-              <InfoTitle>{item.title}</InfoTitle>
-              <InfoDescription>{item.description}</InfoDescription>
-            </InfoContainer>
-          )}
-          keyExtractor={(item: { id: string }) => item.id}
-        />
+      {address && (
+        <AddressContainer>
+          <AddressTitle>Aperte no card abaixo para ver melhor</AddressTitle>
+          <AddressCard address={address} />
+        </AddressContainer>
       )}
     </Container>
   );
