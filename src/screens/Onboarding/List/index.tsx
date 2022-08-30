@@ -150,6 +150,7 @@ const OnboardingList = () => {
         scrollEventThrottle={32}
         viewabilityConfig={viewConfig}
         ref={slidesRef}
+        overScrollMode="never"
       />
 
       <InfoContainer>
