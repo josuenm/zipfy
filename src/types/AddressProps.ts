@@ -1,10 +1,4 @@
 export interface AddressProps {
-  id: string;
-  title: string;
-  description: string;
-}
-
-export interface AddressResponseProps {
   bairro: string;
   cep: string;
   complemento: string;
