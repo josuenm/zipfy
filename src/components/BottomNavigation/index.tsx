@@ -24,35 +24,41 @@ const Tab = createBottomTabNavigator();
 
 export const BottomNavigation = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: TabBarStyle.container,
-      }}
-    >
-      <Tab.Screen
-        name="Home"
-        component={Dashboard}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <ItemNavigation title="Home" icon="home-outline" active={focused} />
-          ),
+    <>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarStyle: TabBarStyle.container,
         }}
-      />
-      <Tab.Screen
-        name="MyAddresses"
-        component={MyAddresses}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <ItemNavigation
-              title="Adresses"
-              icon="map-outline"
-              active={focused}
-            />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      >
+        <Tab.Screen
+          name="Home"
+          component={Dashboard}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <ItemNavigation
+                title="Inicío"
+                icon="home-outline"
+                active={focused}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="MyAddresses"
+          component={MyAddresses}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <ItemNavigation
+                title="Endereços"
+                icon="map-outline"
+                active={focused}
+              />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </>
   );
 };
