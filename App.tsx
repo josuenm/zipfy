@@ -6,7 +6,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { theme, ThemeProps } from "@lib/theme";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, Theme } from "@react-navigation/native";
 import { ImageBackground, StatusBar } from "react-native";
 import {
   getBottomSpace,
@@ -36,7 +36,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer theme={theme.navigationTheme}>
+    <NavigationContainer theme={theme.navigationTheme as Theme}>
       <ThemeProvider theme={theme as ThemeProps}>
         <Background
           source={require("@assets/images/background.png")}
