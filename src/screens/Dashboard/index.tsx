@@ -14,7 +14,7 @@ import {
   Title,
 } from "./styles";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const [address, setAddress] = useState<AddressProps>(null);
   const [search, setSearch] = useState<string>("");
   const [error, setError] = useState<string>(null);
@@ -80,3 +80,5 @@ export const Dashboard = () => {
     </Container>
   );
 };
+
+export default Dashboard;
