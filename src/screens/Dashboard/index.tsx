@@ -1,4 +1,4 @@
-import { AddressCard } from "@components/AddressCard";
+import { AddressFound } from "@components/AddressCard";
 import { useState } from "react";
 import { Keyboard } from "react-native";
 import { zipApi } from "src/services/zipApi";
@@ -74,7 +74,7 @@ const Dashboard = () => {
       {address && (
         <AddressContainer>
           <AddressTitle>Aperte no card abaixo para ver melhor</AddressTitle>
-          <AddressCard address={address} />
+          <AddressFound address={address} />
         </AddressContainer>
       )}
     </Container>
