@@ -9,7 +9,7 @@ export const TabBarStyle = StyleSheet.create({
     bottom: 10,
     right: 0,
     left: "5%",
-    backgroundColor: "rgba(255,255,255,0.3)",
+    backgroundColor: "rgba(150,150,150,0.8)",
     borderRadius: 100,
   },
 });
