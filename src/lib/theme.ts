@@ -13,7 +13,9 @@ export const theme = {
 
   navigationTheme: {
     ...DefaultTheme,
-    background: "transparent",
+    colors: {
+      background: "transparent",
+    },
   },
 };
 
