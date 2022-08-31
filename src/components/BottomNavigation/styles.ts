@@ -12,16 +12,13 @@ export const TabBarStyle = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.3)",
     borderRadius: 100,
   },
-  icon: {
-    display: "none",
-  },
 });
 
 export const Item = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8,
 })<{ active: boolean }>`
-  width: ${({ active }) => "40px"};
-  height: ${({ active }) => "40px"};
+  width: ${({ active }) => (active ? "40px" : "80px")};
+  height: ${({ active }) => (active ? "40px" : "55px")};
   margin: auto 0;
   align-items: center;
   justify-content: center;
@@ -32,8 +29,9 @@ export const Item = styled.TouchableOpacity.attrs({
   background-color: ${({ active, theme }) => active && theme.colors.primary};
 `;
 
-export const Title = styled.Text<{ active: boolean }>`
-  color: ${({ active }) => (active ? "#fff" : "#000")};
+export const Title = styled.Text`
+  color: #fff;
   font-family: ${({ theme }) => theme.fontWeight.medium};
-  font-size: 14px;
+  font-size: 12px;
+  text-align: center;
 `;
