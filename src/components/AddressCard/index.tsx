@@ -1,51 +1,83 @@
 import { AddressProps } from "src/types/AddressProps";
-import { Container, Description, Item, Title } from "./styles";
+import {
+  AddressContainer,
+  AddressDescription,
+  AddressFoundContainer,
+  AddressTitle,
+  AddressZipCode,
+  FoundDescription,
+  FoundTitle,
+  Item,
+} from "./styles";
 
-export const AddressCard = ({ address }: { address: AddressProps }) => {
+export const AddressFound = ({ address }: { address: AddressProps }) => {
   return (
-    <Container>
+    <AddressFoundContainer>
       <Item>
-        <Title>CEP:</Title>
-        <Description>{address.cep}</Description>
+        <FoundTitle>CEP:</FoundTitle>
+        <FoundDescription>{address.cep}</FoundDescription>
       </Item>
       <Item>
-        <Title>Cidade:</Title>
-        <Description>{address.localidade}</Description>
+        <FoundTitle>Cidade:</FoundTitle>
+        <FoundDescription>{address.localidade}</FoundDescription>
       </Item>
       <Item>
-        <Title>Estado:</Title>
-        <Description>{address.uf}</Description>
+        <FoundTitle>Estado:</FoundTitle>
+        <FoundDescription>{address.uf}</FoundDescription>
       </Item>
       <Item>
-        <Title>Rua:</Title>
-        <Description>{address.logradouro}</Description>
+        <FoundTitle>Rua:</FoundTitle>
+        <FoundDescription>{address.logradouro}</FoundDescription>
       </Item>
       <Item>
-        <Title>Bairro:</Title>
-        <Description>{address.bairro}</Description>
+        <FoundTitle>Bairro:</FoundTitle>
+        <FoundDescription>{address.bairro}</FoundDescription>
       </Item>
       {address.complemento.length > 0 && (
         <Item>
-          <Title>Complemento:</Title>
-          <Description>{address.complemento}</Description>
+          <FoundTitle>Complemento:</FoundTitle>
+          <FoundDescription>{address.complemento}</FoundDescription>
         </Item>
       )}
       <Item>
-        <Title>DDD:</Title>
-        <Description>{address.ddd}</Description>
+        <FoundTitle>DDD:</FoundTitle>
+        <FoundDescription>{address.ddd}</FoundDescription>
       </Item>
       <Item>
-        <Title>População:</Title>
-        <Description>{address.ibge}</Description>
+        <FoundTitle>População:</FoundTitle>
+        <FoundDescription>{address.ibge}</FoundDescription>
       </Item>
       <Item>
-        <Title>População:</Title>
-        <Description>{address.siafi}</Description>
+        <FoundTitle>População:</FoundTitle>
+        <FoundDescription>{address.siafi}</FoundDescription>
       </Item>
       <Item>
-        <Title>GIA:</Title>
-        <Description>{address.siafi}</Description>
+        <FoundTitle>GIA:</FoundTitle>
+        <FoundDescription>{address.siafi}</FoundDescription>
       </Item>
-    </Container>
+    </AddressFoundContainer>
+  );
+};
+
+export const Address = ({ data }: { data: AddressProps }) => {
+  return (
+    <AddressContainer>
+      <AddressZipCode>
+        {data.cep.substring(0, 5) + "-" + data.cep.substring(5)}
+      </AddressZipCode>
+
+      <Item>
+        <AddressTitle>Cidade: </AddressTitle>
+        <AddressDescription>{data.localidade}</AddressDescription>
+      </Item>
+      <Item>
+        <AddressTitle>Bairro: </AddressTitle>
+        <AddressDescription>{data.bairro}</AddressDescription>
+      </Item>
+      <Item>
+        <AddressTitle>Rua: </AddressTitle>
+        <AddressDescription>{data.logradouro}</AddressDescription>
+      </Item>
+    </AddressContainer>
   );
 };
