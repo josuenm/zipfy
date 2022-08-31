@@ -36,7 +36,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme.navigationTheme}>
       <ThemeProvider theme={theme as ThemeProps}>
         <Background
           source={require("@assets/images/background.png")}
