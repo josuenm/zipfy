@@ -1,3 +1,5 @@
+import { DefaultTheme } from "@react-navigation/native";
+
 export const theme = {
   colors: {
     primary: "#00B2FF",
@@ -7,6 +9,11 @@ export const theme = {
     regular: "Inter_400Regular",
     medium: "Inter_500Medium",
     bold: "Inter_700Bold",
+  },
+
+  navigationTheme: {
+    ...DefaultTheme,
+    background: "transparent",
   },
 };
 
