@@ -15,6 +15,3 @@
 - react-native-svg
 - commitizen
 
-## Do you want to contribute?
-
-If you want to contribute, create a branch with your github name + issue or your github name + feature. For example `josuenm#1` or `josuenm-newbutton`. We are using commitzen, so always use git cz
